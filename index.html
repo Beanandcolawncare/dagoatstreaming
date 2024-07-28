@@ -5,21 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Player</title>
     <style>
-        /* Add some basic styling */
+        /* Basic styling */
         .track, .video {
             margin: 10px 0;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div id="mp3">
+    <h1>Media Player</h1>
+
+    <div>
+        <button onclick="shuffleTracks()">Shuffle MP3s</button>
+    </div>
+
+    <div id="mp3" class="tab-content">
         <h2>MP3 Tracks</h2>
-        <!-- MP3 Tracks will be added here by JavaScript -->
+        <input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia('mp3')"/>
+        <!-- MP3 Tracks will be dynamically generated here -->
     </div>
-    <div id="mp4">
+
+    <div id="mp4" class="tab-content">
         <h2>MP4 Videos</h2>
-        <!-- MP4 Videos will be added here by JavaScript -->
+        <input type="text" id="mp4Search" placeholder="Search MP4s" onkeyup="searchMedia('mp4')"/>
+        <!-- MP4 Videos will be dynamically generated here -->
     </div>
+
     <script src="scripts.js"></script>
 </body>
 </html>
