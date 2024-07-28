@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Tabs</title>
     <style>
-        /* Basic styling for tabs */
         .tabs {
             display: flex;
             cursor: pointer;
@@ -35,63 +34,35 @@
 <body>
     <h1>Media Tabs</h1>
 
-    <!-- Tabs -->
     <div class="tabs">
         <div class="tab-button active-button" onclick="openTab('mp3')">MP3s</div>
         <div class="tab-button" onclick="openTab('mp4')">MP4s</div>
     </div>
 
-    <!-- Tab Content -->
     <div id="mp3" class="tab-content active-tab">
         <h2>MP3 Tracks</h2>
-        <!-- MP3 1 -->
-        <h3>Track 1</h3>
-        <audio controls>
-            <source src="Free_Test_Data_5MB_MP3.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        <!-- MP3 2 -->
-        <h3>Track 2</h3>
-        <audio controls>
-            <source src="path/to/your/secondfile.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <!-- MP3 Tracks will be dynamically generated here -->
     </div>
 
     <div id="mp4" class="tab-content">
         <h2>MP4 Videos</h2>
-        <!-- MP4 1 -->
-        <h3>Video 1</h3>
-        <video controls width="600">
-            <source src="SampleVideo_1280x720_20mb.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <!-- MP4 2 -->
-        <h3>Video 2</h3>
-        <video controls width="600">
-            <source src="path/to/your/secondvideo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- MP4 videos go here -->
     </div>
 
+    <script src="scripts.js"></script>
     <script>
         function openTab(tabId) {
-            // Hide all tab contents
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => {
                 content.classList.remove('active-tab');
             });
 
-            // Remove active class from all tab buttons
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(button => {
                 button.classList.remove('active-button');
             });
 
-            // Show the selected tab content
             document.getElementById(tabId).classList.add('active-tab');
-
-            // Add active class to the clicked tab button
             const activeButton = document.querySelector(`.tab-button[onclick="openTab('${tabId}')"]`);
             activeButton.classList.add('active-button');
         }
