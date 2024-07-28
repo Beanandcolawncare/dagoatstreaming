@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function searchMedia(type) {
         const input = document.getElementById(type + 'Search').value.toLowerCase();
-        const mediaItems = document.querySelectorAll('#' + type + ' .media-item');
+        const mediaItems = document.querySelectorAll(`#${type} .media-item`);
 
         mediaItems.forEach(item => {
             const heading = item.querySelector('h3').textContent.toLowerCase();
