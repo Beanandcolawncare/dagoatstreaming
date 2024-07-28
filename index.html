@@ -30,7 +30,7 @@
             background-color: white;
             border-bottom: 1px solid white;
         }
-        .track {
+        .track, .video {
             margin-bottom: 20px;
         }
     </style>
@@ -45,12 +45,14 @@
 
     <div id="mp3" class="tab-content active-tab">
         <h2>MP3 Tracks</h2>
+        <input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia('mp3')"/>
         <button onclick="shuffleTracks()">Shuffle</button>
         <!-- MP3 Tracks will be dynamically generated here -->
     </div>
 
     <div id="mp4" class="tab-content">
         <h2>MP4 Videos</h2>
+        <input type="text" id="mp4Search" placeholder="Search MP4s" onkeyup="searchMedia('mp4')"/>
         <!-- MP4 videos go here -->
     </div>
 
@@ -83,8 +85,24 @@
             }
 
             // Remove existing tracks and append shuffled tracks
-            container.innerHTML = '<button onclick="shuffleTracks()">Shuffle</button>';
+            container.innerHTML = '<input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia(\'mp3\')"/><button onclick="shuffleTracks()">Shuffle</button>';
             tracks.forEach(track => container.appendChild(track));
+        }
+
+        function searchMedia(type) {
+            const searchInput = document.getElementById(`${type}Search`);
+            const filter = searchInput.value.toLowerCase();
+            const container = document.getElementById(type);
+            const items = container.querySelectorAll(`.${type}-item`);
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
