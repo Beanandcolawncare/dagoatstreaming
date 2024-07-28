@@ -61,38 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function showTab(tabId) {
-        // Hide all tab content
-        document.querySelectorAll('.tab-content').forEach(tab => {
-            tab.classList.remove('active');
-        });
-
-        // Remove active class from all tab links
-        document.querySelectorAll('.tab-links').forEach(link => {
-            link.classList.remove('active');
-        });
-
-        // Show the clicked tab content
-        document.getElementById(tabId).classList.add('active');
-        document.querySelector(`.tab-links[onclick="showTab('${tabId}')"]`).classList.add('active');
-    }
-
     // Create media elements on page load
     createMediaElement(mp3Container, mp3Files, 'mp3');
     createMediaElement(mp4Container, mp4Files, 'mp4');
 
-    // Add event listeners for search inputs
-    const mp3SearchInput = document.getElementById('mp3Search');
-    const mp4SearchInput = document.getElementById('mp4Search');
-
-    if (mp3SearchInput) {
-        mp3SearchInput.addEventListener('keyup', () => searchMedia('mp3'));
-    }
-
-    if (mp4SearchInput) {
-        mp4SearchInput.addEventListener('keyup', () => searchMedia('mp4'));
-    }
-
     // Make shuffleTracks function accessible globally
     window.shuffleTracks = shuffleTracks;
 });
+
