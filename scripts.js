@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // List of specific MP3 and MP4 files
+    // List of MP3 and MP4 files in their respective folders
     const mp3Files = [
-        'media/Free_Test_Data_500KB_MP3.mp3',
-        'media/Free_Test_Data_5MB_MP3.mp3'
+        'media/mp3/Free_Test_Data_500KB_MP3.mp3',
+        'media/mp3/Free_Test_Data_5MB_MP3.mp3'
         // Add more MP3 file paths as needed
     ];
 
     const mp4Files = [
-        // Add your MP4 files here
-        // Example:
-        // 'media/video1.mp4'
+        'media/mp4/video1.mp4',
+        'media/mp4/video2.mp4'
+        // Add more MP4 file paths as needed
     ];
 
     const mp3Container = document.getElementById('mp3');
