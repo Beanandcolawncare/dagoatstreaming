@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const mp3Files = [
         'firstfile.mp3', 'secondfile.mp3', /* Existing files */,
-        'newfile1.mp3', 'newfile2.mp3', /* New files */
-        // Add more filenames as needed
+        'Free_Test_Data_5MB_MP3.mp3', 'newfile2.mp3', /* New files */
+        
     ];
 
     const mp4Files = [
