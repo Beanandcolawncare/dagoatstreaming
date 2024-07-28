@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Define MP3 and MP4 file paths
-    const mp3Files = Array.from({ length: 50 }, (_, i) => `media/track${i + 1}.mp3`);
-    const mp4Files = Array.from({ length: 20 }, (_, i) => `media/video${i + 1}.mp4`);
-    
+    // List of specific MP3 and MP4 files
+    const mp3Files = [
+        'media/Free_Test_Data_500KB_MP3.mp3',
+        'media/Free_Test_Data_5MB_MP3.mp3'
+        // Add more MP3 file paths as needed
+    ];
+
+    const mp4Files = [
+        // Add your MP4 files here
+        // Example:
+        // 'media/video1.mp4'
+    ];
+
     const mp3Container = document.getElementById('mp3');
     const mp4Container = document.getElementById('mp4');
 
@@ -14,12 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
             mediaElement.classList.add('media-item');
 
             const heading = document.createElement('h3');
-            heading.textContent = file.replace('.' + type, '');
+            heading.textContent = file.split('/').pop().replace('.' + type, '');
             mediaElement.appendChild(heading);
 
             if (type === 'mp3') {
                 const audioElement = document.createElement('audio');
                 audioElement.controls = true;
+                audioElement.addEventListener('error', function () {
+                    console.error(`Error loading file: ${file}`);
+                });
                 
                 const sourceElement = document.createElement('source');
                 sourceElement.src = file;
@@ -30,6 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (type === 'mp4') {
                 const videoElement = document.createElement('video');
                 videoElement.controls = true;
+                videoElement.addEventListener('error', function () {
+                    console.error(`Error loading file: ${file}`);
+                });
                 
                 const sourceElement = document.createElement('source');
                 sourceElement.src = file;
