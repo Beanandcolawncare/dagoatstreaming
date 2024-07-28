@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Tabs</title>
     <style>
+        /* Basic styling for tabs */
         .tabs {
             display: flex;
             cursor: pointer;
@@ -29,6 +30,9 @@
             background-color: white;
             border-bottom: 1px solid white;
         }
+        .track {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +45,7 @@
 
     <div id="mp3" class="tab-content active-tab">
         <h2>MP3 Tracks</h2>
+        <button onclick="shuffleTracks()">Shuffle</button>
         <!-- MP3 Tracks will be dynamically generated here -->
     </div>
 
@@ -65,6 +70,21 @@
             document.getElementById(tabId).classList.add('active-tab');
             const activeButton = document.querySelector(`.tab-button[onclick="openTab('${tabId}')"]`);
             activeButton.classList.add('active-button');
+        }
+
+        function shuffleTracks() {
+            const container = document.getElementById('mp3');
+            const tracks = Array.from(container.querySelectorAll('.track'));
+
+            // Shuffle tracks
+            for (let i = tracks.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [tracks[i], tracks[j]] = [tracks[j], tracks[i]]; // Swap elements
+            }
+
+            // Remove existing tracks and append shuffled tracks
+            container.innerHTML = '<button onclick="shuffleTracks()">Shuffle</button>';
+            tracks.forEach(track => container.appendChild(track));
         }
     </script>
 </body>
