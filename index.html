@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Player</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Ensure correct path -->
 </head>
 <body>
     <h1>Media Player</h1>
@@ -21,6 +21,7 @@
 
         <!-- Tab content -->
         <div id="mp3" class="tab-content">
+            <button onclick="shuffleTracks()">Shuffle MP3s</button>
             <input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia('mp3')"/>
             <!-- MP3 Tracks will be dynamically generated here -->
         </div>
@@ -31,7 +32,7 @@
         </div>
     </div>
 
-    <script src="scripts.js"></script>
+    <script src="scripts.js"></script> <!-- Ensure correct path -->
 </body>
 </html>
 
