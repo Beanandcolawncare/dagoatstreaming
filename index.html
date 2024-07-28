@@ -4,35 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Player</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Ensure correct path -->
+    <style>
+        /* Basic styling for the body and layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .column {
+            flex: 1;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .column h2 {
+            margin-top: 0;
+        }
+
+        .media-list {
+            margin-top: 10px;
+        }
+
+        .media-item {
+            margin: 10px 0;
+        }
+
+        .media-item h3 {
+            margin: 0;
+        }
+
+        /* Basic styling for buttons and inputs */
+        button {
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Media Player</h1>
 
-    <div class="tab-container">
-        <!-- Tabs -->
-        <div class="tabs">
-            <input type="radio" name="tab" id="tab-mp3" checked>
-            <label class="tab-links" for="tab-mp3">MP3 Tracks</label>
-
-            <input type="radio" name="tab" id="tab-mp4">
-            <label class="tab-links" for="tab-mp4">MP4 Videos</label>
-        </div>
-
-        <!-- Tab content -->
-        <div id="mp3" class="tab-content">
+    <div class="container">
+        <!-- MP3 Column -->
+        <div class="column">
+            <h2>MP3 Tracks</h2>
             <button onclick="shuffleTracks()">Shuffle MP3s</button>
             <input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia('mp3')"/>
-            <!-- MP3 Tracks will be dynamically generated here -->
+            <div id="mp3" class="media-list">
+                <!-- MP3 Tracks will be dynamically generated here -->
+            </div>
         </div>
 
-        <div id="mp4" class="tab-content">
+        <!-- MP4 Column -->
+        <div class="column">
+            <h2>MP4 Videos</h2>
             <input type="text" id="mp4Search" placeholder="Search MP4s" onkeyup="searchMedia('mp4')"/>
-            <!-- MP4 Videos will be dynamically generated here -->
+            <div id="mp4" class="media-list">
+                <!-- MP4 Videos will be dynamically generated here -->
+            </div>
         </div>
     </div>
 
-    <script src="scripts.js"></script> <!-- Ensure correct path -->
+    <!-- Link to external JavaScript file -->
+    <script src="scripts.js"></script>
 </body>
 </html>
 
