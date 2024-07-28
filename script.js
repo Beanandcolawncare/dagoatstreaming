@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
+ocument.addEventListener('DOMContentLoaded', function () {
     const mp3Files = [
-        'firstfile.mp3',
+        'Free_Test_Data_5MB_MP3.mp3',
         'secondfile.mp3',
         'Free_Test_Data_5MB_MP3.mp3'
     ];
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function searchMedia(type) {
         const input = document.getElementById(type + 'Search').value.toLowerCase();
-        const mediaItems = document.querySelectorAll('#' + type + ' .track-item, #' + type + ' .video-item');
+        const mediaItems = document.querySelectorAll('#' + type + ' .mp3-item, #' + type + ' .mp4-item');
 
         mediaItems.forEach(item => {
             const heading = item.querySelector('h3').textContent.toLowerCase();
@@ -69,6 +69,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Create media elements on page load
     createMediaElement(mp3Container, mp3Files, 'mp3');
     createMediaElement(mp4Container, mp4Files, 'mp4');
+
+    // Add event listeners for search inputs
+    const mp3SearchInput = document.getElementById('mp3Search');
+    const mp4SearchInput = document.getElementById('mp4Search');
+
+    if (mp3SearchInput) {
+        mp3SearchInput.addEventListener('keyup', () => searchMedia('mp3'));
+    }
+
+    if (mp4SearchInput) {
+        mp4SearchInput.addEventListener('keyup', () => searchMedia('mp4'));
+    }
+
+    // Make shuffleTracks function accessible globally
+    window.shuffleTracks = shuffleTracks;
 });
