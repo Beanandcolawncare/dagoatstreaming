@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Generate media file arrays
     const mp3Files = Array.from({ length: 50 }, (_, i) => `track${i + 1}.mp3`);
     const mp4Files = Array.from({ length: 20 }, (_, i) => `video${i + 1}.mp4`);
     
@@ -68,4 +69,3 @@ document.addEventListener('DOMContentLoaded', function () {
     // Make shuffleTracks function accessible globally
     window.shuffleTracks = shuffleTracks;
 });
-
