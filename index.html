@@ -1,38 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Player</title>
-    <style>
-        /* Basic styling */
-        .track, .video {
-            margin: 10px 0;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <h1>Media Player</h1>
+document.addEventListener('DOMContentLoaded', function () {
+    const mp3Files = [
+        'firstfile.mp3',
+        'secondfile.mp3',
+        'Free_Test_Data_5MB_MP3.mp3'
+    ];
 
-    <div>
-        <button onclick="shuffleTracks()">Shuffle MP3s</button>
-    </div>
+    const mp4Files = [
+        'video1.mp4',
+        'video2.mp4'
+    ];
+    
+    const mp3Container = document.getElementById('mp3');
+    const mp4Container = document.getElementById('mp4');
 
-    <div id="mp3" class="tab-content">
-        <h2>MP3 Tracks</h2>
-        <input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia('mp3')"/>
-        <!-- MP3 Tracks will be dynamically generated here -->
-    </div>
+    function createMediaElement(container, files, type) {
+        container.innerHTML = '';  // Clear previous content
 
-    <div id="mp4" class="tab-content">
-        <h2>MP4 Videos</h2>
-        <input type="text" id="mp4Search" placeholder="Search MP4s" onkeyup="searchMedia('mp4')"/>
-        <!-- MP4 Videos will be dynamically generated here -->
-    </div>
+        files.forEach(file => {
+            const mediaElement = document.createElement('div');
+            mediaElement.classList.add(type + '-item');
 
-    <script src="scripts.js"></script>
-</body>
-</html>
+            const heading = document.createElement('h3');
+            heading.textContent = file.replace('.' + type, '');
+            mediaElement.appendChild(heading);
+
+            if (type === 'mp3') {
+                const audioElement = document.createElement('audio');
+                audioElement.controls = true;
+                
+                const sourceElement = document.createElement('source');
+                sourceElement.src = file;
+                sourceElement.type = 'audio/mpeg';
+
+                audioElement.appendChild(sourceElement);
+                mediaElement.appendChild(audioElement);
+            } else if (type === 'mp4') {
+                const videoElement = document.createElement('video');
+                videoElement.controls = true;
+                
+                const sourceElement = document.createElement('source');
+                sourceElement.src = file;
+                sourceElement.type = 'video/mp4';
+
+                videoElement.appendChild(sourceElement);
+                mediaElement.appendChild(videoElement);
+            }
+
+            container.appendChild(mediaElement);
+        });
+    }
+
+    function shuffleTracks() {
+        const shuffledFiles = mp3Files.sort(() => 0.5 - Math.random());
+        createMediaElement(mp3Container, shuffledFiles, 'mp3');
+    }
+
+    function searchMedia(type) {
+        const input = document.getElementById(type + 'Search').value.toLowerCase();
+        const mediaItems = document.querySelectorAll('#' + type + ' .track-item, #' + type + ' .video-item');
+
+        mediaItems.forEach(item => {
+            const heading = item.querySelector('h3').textContent.toLowerCase();
+            if (heading.includes(input)) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+
+    createMediaElement(mp3Container, mp3Files, 'mp3');
+    createMediaElement(mp4Container, mp4Files, 'mp4');
+});
