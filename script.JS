@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             trackElement.classList.add('track', 'mp3-item');
 
             const heading = document.createElement('h3');
-            heading.textContent = file.replace('.mp3', '');
+            heading.textContent = file.replace('.mp3', 'Free_Test_Data_5MB_MP3.mp3');
             trackElement.appendChild(heading);
 
             const audioElement = document.createElement('audio');
