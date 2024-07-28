@@ -1,0 +1,70 @@
+/* styles.css */
+
+.tab-container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.tabs {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab-links {
+    padding: 10px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    text-align: center;
+    flex: 1;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.tab-links.active {
+    background: #bbb;
+    border-bottom: 1px solid #bbb;
+}
+
+.tab-content {
+    display: none;
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.media-item {
+    margin: 10px 0;
+}
+
+.media-item h3 {
+    margin: 0;
+}
+
+/* Hide the radio buttons */
+input[type="radio"] {
+    display: none;
+}
+
+/* Show tab content based on the selected tab */
+input#tab-mp3:checked ~ #mp3,
+input#tab-mp4:checked ~ #mp4 {
+    display: block;
+}
+
+/* Hide inactive tab content */
+#mp3, #mp4 {
+    display: none;
+}
