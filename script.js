@@ -104,3 +104,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Make shuffleTracks function accessible globally
     window.shuffleTracks = shuffleTracks;
 });
+
