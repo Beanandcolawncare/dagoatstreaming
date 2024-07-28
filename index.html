@@ -4,57 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Player</title>
-    <style>
-        .tab-content {
-            display: none; /* Hide all tab content by default */
-        }
-        .tab-content.active {
-            display: block; /* Show active tab content */
-        }
-        .tab-links {
-            cursor: pointer;
-            padding: 10px;
-            background: #ddd;
-            margin-right: 5px;
-            display: inline-block;
-            border: 1px solid #aaa;
-            border-radius: 5px 5px 0 0;
-        }
-        .tab-links.active {
-            background: #bbb;
-            border-bottom: none;
-        }
-        .hidden {
-            display: none;
-        }
-        .media-item {
-            margin: 10px 0;
-        }
-        .media-item h3 {
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
 </head>
 <body>
     <h1>Media Player</h1>
 
-    <!-- Tabs -->
-    <div>
-        <div class="tab-links active" onclick="showTab('mp3')">MP3 Tracks</div>
-        <div class="tab-links" onclick="showTab('mp4')">MP4 Videos</div>
-    </div>
+    <div class="tab-container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <input type="radio" name="tab" id="tab-mp3" checked>
+            <label class="tab-links" for="tab-mp3">MP3 Tracks</label>
 
-    <!-- Tab content -->
-    <div id="mp3" class="tab-content active">
-        <input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia('mp3')"/>
-        <!-- MP3 Tracks will be dynamically generated here -->
-    </div>
+            <input type="radio" name="tab" id="tab-mp4">
+            <label class="tab-links" for="tab-mp4">MP4 Videos</label>
+        </div>
 
-    <div id="mp4" class="tab-content">
-        <input type="text" id="mp4Search" placeholder="Search MP4s" onkeyup="searchMedia('mp4')"/>
-        <!-- MP4 Videos will be dynamically generated here -->
+        <!-- Tab content -->
+        <div id="mp3" class="tab-content">
+            <input type="text" id="mp3Search" placeholder="Search MP3s" onkeyup="searchMedia('mp3')"/>
+            <!-- MP3 Tracks will be dynamically generated here -->
+        </div>
+
+        <div id="mp4" class="tab-content">
+            <input type="text" id="mp4Search" placeholder="Search MP4s" onkeyup="searchMedia('mp4')"/>
+            <!-- MP4 Videos will be dynamically generated here -->
+        </div>
     </div>
 
     <script src="scripts.js"></script>
 </body>
 </html>
+
