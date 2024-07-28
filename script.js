@@ -1,14 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const mp3Files = [
-        'Free_Test_Data_5MB_MP3.mp3',
-        'secondfile.mp3',
-        'Free_Test_Data_5MB_MP3.mp3'
-    ];
-
-    const mp4Files = [
-        'video1.mp4',
-        'video2.mp4'
-    ];
+    const mp3Files = Array.from({ length: 50 }, (_, i) => `track${i + 1}.mp3`);
+    const mp4Files = Array.from({ length: 20 }, (_, i) => `video${i + 1}.mp4`);
     
     const mp3Container = document.getElementById('mp3');
     const mp4Container = document.getElementById('mp4');
@@ -18,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         files.forEach(file => {
             const mediaElement = document.createElement('div');
-            mediaElement.classList.add(type + '-item');
+            mediaElement.classList.add('media-item');
 
             const heading = document.createElement('h3');
             heading.textContent = file.replace('.' + type, '');
@@ -57,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function searchMedia(type) {
         const input = document.getElementById(type + 'Search').value.toLowerCase();
-        const mediaItems = document.querySelectorAll('#' + type + ' .mp3-item, #' + type + ' .mp4-item');
+        const mediaItems = document.querySelectorAll('#' + type + ' .media-item');
 
         mediaItems.forEach(item => {
             const heading = item.querySelector('h3').textContent.toLowerCase();
@@ -104,5 +96,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Make shuffleTracks function accessible globally
     window.shuffleTracks = shuffleTracks;
 });
-
 
