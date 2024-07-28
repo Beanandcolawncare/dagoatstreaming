@@ -1,4 +1,4 @@
-ocument.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const mp3Files = [
         'Free_Test_Data_5MB_MP3.mp3',
         'secondfile.mp3',
@@ -67,6 +67,22 @@ ocument.addEventListener('DOMContentLoaded', function () {
                 item.classList.add('hidden');
             }
         });
+    }
+
+    function showTab(tabId) {
+        // Hide all tab content
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Remove active class from all tab links
+        document.querySelectorAll('.tab-links').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Show the clicked tab content
+        document.getElementById(tabId).classList.add('active');
+        document.querySelector(`.tab-links[onclick="showTab('${tabId}')"]`).classList.add('active');
     }
 
     // Create media elements on page load
