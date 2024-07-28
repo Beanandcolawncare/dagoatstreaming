@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Generate media file arrays
-    const mp3Files = Array.from({ length: 50 }, (_, i) => `track${i + 1}.mp3`);
-    const mp4Files = Array.from({ length: 20 }, (_, i) => `video${i + 1}.mp4`);
+    // Define MP3 and MP4 file paths
+    const mp3Files = Array.from({ length: 50 }, (_, i) => `media/track${i + 1}.mp3`);
+    const mp4Files = Array.from({ length: 20 }, (_, i) => `media/video${i + 1}.mp4`);
     
     const mp3Container = document.getElementById('mp3');
     const mp4Container = document.getElementById('mp4');
