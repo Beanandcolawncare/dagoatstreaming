@@ -1,80 +1,86 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('media-list.json')
-        .then(response => response.json())
-        .then(data => {
-            const mp3Files = data.mp3Files;
-            const mp4Files = data.mp4Files;
-            const mp3Container = document.getElementById('mp3');
-            const mp4Container = document.getElementById('mp4');
+    // Manually list your media files
+    const mp3Files = [
+        'media/mp3/Free_Test_Data_500KB_MP3.mp3',
+        'media/mp3/Free_Test_Data_5MB_MP3.mp3'
+        // Add more MP3 files if needed
+    ];
 
-            function createMediaElement(container, files, type) {
-                container.innerHTML = '';  // Clear previous content
+    const mp4Files = [
+        'media/mp4/video1.mp4',
+        'media/mp4/video2.mp4'
+        // Add more MP4 files if needed
+    ];
 
-                files.forEach(file => {
-                    const mediaElement = document.createElement('div');
-                    mediaElement.classList.add('media-item');
+    const mp3Container = document.getElementById('mp3');
+    const mp4Container = document.getElementById('mp4');
 
-                    const heading = document.createElement('h3');
-                    heading.textContent = file.split('/').pop().replace('.' + type, '');
-                    mediaElement.appendChild(heading);
+    function createMediaElement(container, files, type) {
+        container.innerHTML = '';  // Clear previous content
 
-                    if (type === 'mp3') {
-                        const audioElement = document.createElement('audio');
-                        audioElement.controls = true;
-                        audioElement.addEventListener('error', function () {
-                            console.error(`Error loading file: ${file}`);
-                        });
+        files.forEach(file => {
+            const mediaElement = document.createElement('div');
+            mediaElement.classList.add('media-item');
 
-                        const sourceElement = document.createElement('source');
-                        sourceElement.src = file;
-                        sourceElement.type = 'audio/mpeg';
+            const heading = document.createElement('h3');
+            heading.textContent = file.split('/').pop().replace('.' + type, '');
+            mediaElement.appendChild(heading);
 
-                        audioElement.appendChild(sourceElement);
-                        mediaElement.appendChild(audioElement);
-                    } else if (type === 'mp4') {
-                        const videoElement = document.createElement('video');
-                        videoElement.controls = true;
-                        videoElement.addEventListener('error', function () {
-                            console.error(`Error loading file: ${file}`);
-                        });
-
-                        const sourceElement = document.createElement('source');
-                        sourceElement.src = file;
-                        sourceElement.type = 'video/mp4';
-
-                        videoElement.appendChild(sourceElement);
-                        mediaElement.appendChild(videoElement);
-                    }
-
-                    container.appendChild(mediaElement);
+            if (type === 'mp3') {
+                const audioElement = document.createElement('audio');
+                audioElement.controls = true;
+                audioElement.addEventListener('error', function () {
+                    console.error(`Error loading file: ${file}`);
                 });
-            }
+                
+                const sourceElement = document.createElement('source');
+                sourceElement.src = file;
+                sourceElement.type = 'audio/mpeg';
 
-            function shuffleTracks() {
-                const shuffledFiles = mp3Files.sort(() => 0.5 - Math.random());
-                createMediaElement(mp3Container, shuffledFiles, 'mp3');
-            }
-
-            function searchMedia(type) {
-                const input = document.getElementById(type + 'Search').value.toLowerCase();
-                const mediaItems = document.querySelectorAll(`#${type} .media-item`);
-
-                mediaItems.forEach(item => {
-                    const heading = item.querySelector('h3').textContent.toLowerCase();
-                    if (heading.includes(input)) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
+                audioElement.appendChild(sourceElement);
+                mediaElement.appendChild(audioElement);
+            } else if (type === 'mp4') {
+                const videoElement = document.createElement('video');
+                videoElement.controls = true;
+                videoElement.addEventListener('error', function () {
+                    console.error(`Error loading file: ${file}`);
                 });
+                
+                const sourceElement = document.createElement('source');
+                sourceElement.src = file;
+                sourceElement.type = 'video/mp4';
+
+                videoElement.appendChild(sourceElement);
+                mediaElement.appendChild(videoElement);
             }
 
-            // Create media elements on page load
-            createMediaElement(mp3Container, mp3Files, 'mp3');
-            createMediaElement(mp4Container, mp4Files, 'mp4');
+            container.appendChild(mediaElement);
+        });
+    }
 
-            // Make shuffleTracks function accessible globally
-            window.shuffleTracks = shuffleTracks;
-        })
-        .catch(error => console.error('Error loading media list:', error));
+    function shuffleTracks() {
+        const shuffledFiles = mp3Files.sort(() => 0.5 - Math.random());
+        createMediaElement(mp3Container, shuffledFiles, 'mp3');
+    }
+
+    function searchMedia(type) {
+        const input = document.getElementById(type + 'Search').value.toLowerCase();
+        const mediaItems = document.querySelectorAll(`#${type} .media-item`);
+
+        mediaItems.forEach(item => {
+            const heading = item.querySelector('h3').textContent.toLowerCase();
+            if (heading.includes(input)) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+
+    // Create media elements on page load
+    createMediaElement(mp3Container, mp3Files, 'mp3');
+    createMediaElement(mp4Container, mp4Files, 'mp4');
+
+    // Make shuffleTracks function accessible globally
+    window.shuffleTracks = shuffleTracks;
 });
