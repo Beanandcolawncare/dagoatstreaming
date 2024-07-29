@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Manually list your media files
     const mp3Files = [
-        'media/track1.mp3',
-        'media/track2.mp3'
+        'Free_Test_Data_500KB_MP3.mp3',
         // Add more MP3 files if needed
     ];
 
     const mp4Files = [
-        'media/video1.mp4',
+        'SampleVideo_1280x720_20mb.mp4',
         'media/video2.mp4'
         // Add more MP4 files if needed
     ];
