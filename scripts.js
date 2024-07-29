@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Manually list your media files
     const mp3Files = [
-        'Free_Test_Data_500KB_MP3.mp3',
+        'https://beanandcolawncare.github.io/dagoatstreaming/Free_Test_Data_500KB_MP3.mp3',
         // Add more MP3 files if needed
     ];
 
