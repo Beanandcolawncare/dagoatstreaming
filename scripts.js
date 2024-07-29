@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Manually list your media files
     const mp3Files = [
-        'media/mp3/Free_Test_Data_500KB_MP3.mp3',
-        'media/mp3/Free_Test_Data_5MB_MP3.mp3'
+        'media/track1.mp3',
+        'media/track2.mp3'
         // Add more MP3 files if needed
     ];
 
     const mp4Files = [
-        'media/mp4/video1.mp4',
-        'media/mp4/video2.mp4'
+        'media/video1.mp4',
+        'media/video2.mp4'
         // Add more MP4 files if needed
     ];
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 audioElement.addEventListener('error', function () {
                     console.error(`Error loading file: ${file}`);
                 });
-                
+
                 const sourceElement = document.createElement('source');
                 sourceElement.src = file;
                 sourceElement.type = 'audio/mpeg';
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 videoElement.addEventListener('error', function () {
                     console.error(`Error loading file: ${file}`);
                 });
-                
+
                 const sourceElement = document.createElement('source');
                 sourceElement.src = file;
                 sourceElement.type = 'video/mp4';
